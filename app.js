@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require("express");
 const db = require("./db");
 
@@ -12,7 +13,7 @@ app.use(express.json());
 app.use("/user", controllers.usercontroller);
 
 db.authenticate()
-  .then(() => db.sync({force: true})) // => {force: true}
+  .then(() => db.sync()) // => {force: true}
   .then(() => {
     app.listen(3000, () =>
       console.log(`[Server: ] App is listening on Port ${3000}`)
